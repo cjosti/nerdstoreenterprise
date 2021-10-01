@@ -92,3 +92,7 @@ D:\Cursos\Aulas\Enterprise\nerdstoreenterprise\src\services\NSE.Identidade.API\b
 D:\Cursos\Aulas\Enterprise\nerdstoreenterprise\src\services\NSE.Identidade.API\obj\Debug\netcoreapp3.1\NSE.Identidade.API.MvcApplicationPartsAssemblyInfo.cs
 D:\Cursos\Aulas\Enterprise\nerdstoreenterprise\src\services\NSE.Identidade.API\obj\Debug\netcoreapp3.1\NSE.Identidade.API.csproj.CopyComplete
 D:\Cursos\Aulas\Enterprise\nerdstoreenterprise\src\services\NSE.Identidade.API\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+D:\Cursos\Aulas\Enterprise\nerdstoreenterprise\src\services\NSE.Identidade.API\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+D:\Cursos\Aulas\Enterprise\nerdstoreenterprise\src\services\NSE.Identidade.API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+D:\Cursos\Aulas\Enterprise\nerdstoreenterprise\src\services\NSE.Identidade.API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Cursos\Aulas\Enterprise\nerdstoreenterprise\src\services\NSE.Identidade.API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
