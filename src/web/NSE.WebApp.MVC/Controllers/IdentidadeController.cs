@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace NSE.WebApp.MVC.Controllers
 {
-    public class IdentidadeController : Controller
+    public class IdentidadeController : MainController
     {
         private readonly IAutenticacaoService _autenticacaoService;
 
@@ -36,7 +36,7 @@ namespace NSE.WebApp.MVC.Controllers
             // API - Registro
             var resposta = await _autenticacaoService.Registro(usuarioRegistro);
 
-            if (false) return View(usuarioRegistro);
+            if (ResponsePossuiErros(resposta.ResponseResult)) return View(usuarioRegistro);
 
             // Realizar registro no APP
             await RealizarLogin(resposta);
@@ -60,7 +60,7 @@ namespace NSE.WebApp.MVC.Controllers
             // API - Registro
             var resposta = await _autenticacaoService.Login(usuarioLogin);
 
-            if (false) return View(usuarioLogin);
+            if (ResponsePossuiErros(resposta.ResponseResult)) return View(usuarioLogin);
 
             // Realizar registro no APP
             await RealizarLogin(resposta);
