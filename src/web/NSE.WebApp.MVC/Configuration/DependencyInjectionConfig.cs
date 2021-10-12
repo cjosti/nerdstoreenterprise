@@ -22,18 +22,21 @@ namespace NSE.WebApp.MVC.Configuration
 
             services.AddHttpClient<ICatalogoService, CatalogoService>()
                 .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
-                .AddPolicyHandler(PollyExtensions.EsperarTentar());
+                .AddPolicyHandler(PollyExtensions.EsperarTentar())
+                .AddTransientHttpErrorPolicy(
+                    p => p.CircuitBreakerAsync(5, TimeSpan.FromSeconds(30)));
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IUser, AspNetUser>();
+
+            #region [Refit]
             //services.AddHttpClient("Refit", options =>
             //    {
             //        options.BaseAddress = new Uri(configuration.GetSection("CatalogoUrl").Value);
             //    })
             //    .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
             //    .AddTypedClient(Refit.RestService.For<ICatalogoServiceRefit>);
-
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-            services.AddScoped<IUser, AspNetUser>();
+            #endregion
         }
 
         public class PollyExtensions
