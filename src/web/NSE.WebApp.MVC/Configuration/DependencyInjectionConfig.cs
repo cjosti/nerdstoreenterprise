@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using NSE.WebApp.MVC.Extensions;
 using NSE.WebApp.MVC.Services;
 using NSE.WebApp.MVC.Services.Handlers;
+using Polly;
 
 namespace NSE.WebApp.MVC.Configuration
 {
@@ -16,15 +17,17 @@ namespace NSE.WebApp.MVC.Configuration
 
             services.AddHttpClient<IAutenticacaoService, AutenticacaoService>();
 
-            //services.AddHttpClient<ICatalogoService, CatalogoService>()
-            //    .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>();
-
-            services.AddHttpClient("Refit", options =>
-                {
-                    options.BaseAddress = new Uri(configuration.GetSection("CatalogoUrl").Value);
-                })
+            services.AddHttpClient<ICatalogoService, CatalogoService>()
                 .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
-                .AddTypedClient(Refit.RestService.For<ICatalogoServiceRefit>);
+                .AddTransientHttpErrorPolicy(
+                    p => p.WaitAndRetryAsync(3, _ => TimeSpan.FromMilliseconds(600)));
+
+            //services.AddHttpClient("Refit", options =>
+            //    {
+            //        options.BaseAddress = new Uri(configuration.GetSection("CatalogoUrl").Value);
+            //    })
+            //    .AddHttpMessageHandler<HttpClientAuthorizationDelegatingHandler>()
+            //    .AddTypedClient(Refit.RestService.For<ICatalogoServiceRefit>);
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
