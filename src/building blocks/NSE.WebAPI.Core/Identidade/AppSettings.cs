@@ -1,6 +1,4 @@
-﻿using System.Reflection.Metadata.Ecma335;
-
-namespace NSE.Identidade.API.Extensions
+﻿namespace NSE.WebAPI.Core.Identidade
 {
     public class AppSettings
     {
