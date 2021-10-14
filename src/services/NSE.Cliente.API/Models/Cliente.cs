@@ -1,9 +1,9 @@
 ﻿using System;
 using NSE.Core.DomainObjects;
 
-namespace NSE.Cliente.API.Models
+namespace NSE.Clientes.API.Models
 {
-    public class Cliente: Entity, IAggregateRoot
+    public class Cliente : Entity, IAggregateRoot
     {
         public string Nome { get; private set; }
         public Email Email { get; private set; }
